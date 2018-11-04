@@ -36,11 +36,6 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// </summary>
         public AugmentedImageVisualizer AugmentedImageVisualizerPrefab;
 
-        /// <summary>
-        /// The overlay containing the fit to scan user guide.
-        /// </summary>
-        public GameObject FitToScanOverlay;
-
         private Dictionary<int, AugmentedImageVisualizer> m_Visualizers
             = new Dictionary<int, AugmentedImageVisualizer>();
 
@@ -86,18 +81,6 @@ namespace GoogleARCore.Examples.AugmentedImage
                     GameObject.Destroy(visualizer.gameObject);
                 }
             }
-
-            // Show the fit-to-scan overlay if there are no images that are Tracking.
-            foreach (var visualizer in m_Visualizers.Values)
-            {
-                if (visualizer.Image.TrackingState == TrackingState.Tracking)
-                {
-                    FitToScanOverlay.SetActive(false);
-                    return;
-                }
-            }
-
-            FitToScanOverlay.SetActive(true);
         }
     }
 }
